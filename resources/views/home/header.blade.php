@@ -14,7 +14,7 @@
                         <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{url('redirect')}}">Home</a>
+                                    <a class="nav-link" href="{{url('index')}}">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('adoption')}}">Adoption</a>
@@ -36,7 +36,10 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
+                                    <a class="nav-link" href="{{url('vethome')}}">Vet Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url('create_post')}}">Create Post</a>
                                 </li>
                             </ul>
                         </div>
@@ -44,6 +47,9 @@
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                             @if (Route::has('login'))
                             @auth
+                            
+
+                            
                             <form method="POST" action="{{ route('logout') }}">
                             @csrf
 

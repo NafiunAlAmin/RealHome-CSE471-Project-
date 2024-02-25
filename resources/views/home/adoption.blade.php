@@ -31,7 +31,13 @@
             width: 370px;
             height: 300px;
         }
+        .post
+        {
+            text-align: center;
+            padding-top:40px;
+        }
     </style>
+
 
     
 </head>
@@ -56,17 +62,22 @@
             </div>
         </div>
     </section>
+    <sectiom>
+        <div class="post">
+            <a href="{{url('adoptpost')}}" class="btn_3">Add Adoption</a>
+        </div>
+    </section>
     <section class="product_list section_padding">
         <div class="container">
-            <div class="col-md-8">
+            <div class="col-md-20">
                 <div class="product_list">
                     <div class="row">
                         @foreach($data as $data)
-                        <div class="col-lg-6 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
                                 <img src="/adoptpic/{{$data->image}}" alt="#" class="img-fluid">
-                                <h3> <a href="{{url('description')}}">{{$data->title}}</a> </h3>
-                                <p>Personality: {{$data->personality}}</p>
+                                <h3> <a href="{{url('description',$data->id)}}">{{$data->title}}</a> </h3>
+                                <p>Posted by: {{$data->user}}</p>
                             </div>
                         </div>
                         @endforeach

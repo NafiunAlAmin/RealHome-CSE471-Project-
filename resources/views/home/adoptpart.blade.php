@@ -8,7 +8,7 @@
                                 your 
                                 Paw-some Companion</h1>
                             <p>Your Journey to Unconditional Love Begins</p>
-                            <a href="product_list.html" class="btn_1">Adopt Now</a>
+                            <a href="{{url('adoption')}}" class="btn_1">Adopt Now</a>
                         </div>
                     </div>
                 </div>

@@ -113,7 +113,12 @@
 
                         <div class="div_design">
                             <Label> Age :</label>
-                            <input type='number' name='age' placeholder='Age' required="">
+                            <input type='text' name='age' placeholder='Age' required="">
+                        </div>
+
+                        <div class="div_design">
+                            <Label> Description :</label>
+                            <input type='text' name='description' placeholder='Description' required="">
                         </div>
 
                         <div class="div_design">
@@ -145,6 +150,9 @@
                         <td>Gender</td>
                         <td>Personality</td>
                         <td>Picture</td>
+                        <td>Number</td>
+                        <td>User</td>
+                        <td>Description</td>
                         <td>Remove</td>
                     </tr>
                     @foreach($data as $data)
@@ -158,6 +166,9 @@
                         <td>{{$data->personality}}</td>
                         <td>
                             <img src="/adoptpic/{{$data->image}}" class='img_size'></td>
+                        <td>{{$data->number}}</td>
+                        <td>{{$data->user}}</td>
+                        <td>{{$data->description}}</td>
                         <td>
                             <a class="btn btn-danger" href ="{{url('delete_adoption',$data->id)}}">Remove</a>
                         </td>

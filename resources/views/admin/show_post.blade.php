@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head> 
+<head> 
     @include('admin.css')
-    <style type = "text/css">
-        .title_deg
-        {
+    <style type="text/css">
+        .title_deg {
             font-size: 30px;
             font-weight: bold;
             text-align: center;
             padding: 30px;
             color: white;
-
         }
-        .table_deg
-        {
-            border : 1px solid white;
+        .table_deg {
+            border: 1px solid white;
             width: 80%;
             text-align: center;
             margin-left: 100px;
         }
-        .img_deg
-        {
+        .img_deg {
             height: 100px;
             width: 150px;
             padding: 10px;
-
         }
-
     </style>
-  </head>
-  <body>
-    @include('admin.header')
-        
-    <div class="d-flex align-items-stretch">
-      <!-- Sidebar Navigation-->
-      @include('admin.sidebar')
-      <!-- Sidebar Navigation end-->
-      <div class="page-content">
-      
+</head>
+<body>
+@include('admin.header')
+<div class="d-flex align-items-stretch">
+    <!-- Sidebar Navigation-->
+    @include('admin.sidebar')
+    <!-- Sidebar Navigation end-->
+    <div class="page-content">
         <h1 class="title_deg">All Post</h1>
         <table class="table_deg">
             <tr>
@@ -48,28 +40,32 @@
                 <th>Usertype</th>
                 <th>Image</th>
                 <th>Delete</th>
-
+                <th>Verify</th>
+                <th>Reject</th>
             </tr>
-@foreach($post as $post)
+            @foreach($post as $singlePost)
             <tr>
-                <td>{{$post->title}}</td>
-                <td>{{$post->description}}</td>
-                <td>{{$post->name}}</td>
-                <td>{{$post->Post_status}}</td>
-                <td>{{$post->user_type}}</td>
+                <td>{{ $singlePost->title }}</td>
+                <td>{{ $singlePost->description }}</td>
+                <td>{{ $singlePost->name }}</td>
+                <td>{{ $singlePost->Post_status }}</td>
+                <td>{{ $singlePost->user_type }}</td>
                 <td>
-                    <img class= "img_deg"src="postimage/{{$post->image}}">
+                    <img class="img_deg" src="postimage/{{ $singlePost->image }}">
                 </td>
                 <td>
-                  <a href="{{url('delete_post',$post->id)}}" class = "btn btn-danger">Delete</a>
+                    <a href="{{ url('delete_post', $singlePost->id) }}" class="btn btn-danger">Delete</a>
                 </td>
-
+                <td>
+                    <a href="{{ route('verify_post', $singlePost->id) }}" class="btn btn-outline-secondary">Verify</a>
+                </td>
+                <td>
+                    <a href="{{ route('reject_post', $singlePost->id) }}" class="btn btn-primary">Reject</a>
+                </td>
             </tr>
-@endforeach
+            @endforeach
         </table>
-
-      </div>
-
-      
-  </body>
+    </div>
+</div>
+</body>
 </html>

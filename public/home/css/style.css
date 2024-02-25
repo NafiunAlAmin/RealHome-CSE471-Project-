@@ -3418,30 +3418,8 @@ input:focus {
 }
 
 /* line 25, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_product_list.scss */
-.select_option .select_option_list {
-  background-color: #F4EDF2;
-  border-radius: 50px;
-  border: 1px solid #F4EDF2;
-  padding: 13px 25px;
-  width: 100%;
-  line-height: 22px;
-  color: #795376;
-}
 
 /* line 34, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_product_list.scss */
-.select_option .select_option_dropdown {
-  background-color: #F4EDF2;
-  border-radius: 10px;
-  border: 1px solid #F4EDF2;
-  padding: 13px 25px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-/* line 41, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_product_list.scss */
-.select_option .select_option_dropdown a {
-  color: #795376;
-}
 
 /************* our offer *****************/
 /* line 2, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_offer.scss */

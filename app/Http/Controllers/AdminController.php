@@ -8,7 +8,7 @@ use App\Models\Catagory;
 use App\Models\adopt;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
-
+use App\Models\Vet;
 
 class AdminController extends Controller
 {
@@ -37,6 +37,8 @@ class AdminController extends Controller
 
     public function add_adoption(Request $request)
     {
+        $user =Auth::user();
+        $id=$user->id;
         $adoption= new adopt;
         $adoption-> title=$request-> title;
         $adoption-> type=$request-> type;
@@ -45,7 +47,10 @@ class AdminController extends Controller
         $adoption-> age=$request->age;
         $adoption-> gender=$request->gender;
         $adoption-> personality=$request->personality;
-
+        $adoption-> number='01111111110';
+        $adoption-> user='Admin';
+        $adoption-> user_id=$id ;
+        $adoption-> description=$request->description;
         $image=$request-> image;
         $imagename=time().'.'.$image->getClientOriginalExtension();
         $request->image->move('adoptpic',$imagename);
@@ -65,43 +70,46 @@ class AdminController extends Controller
     public function post_page()
     {
         return view('admin.post_page');
+
+
     }
+
+
     public function add_post(Request $request)
+{
+    $user = Auth::user(); // Change Auth()->user() to Auth::user()
+    $user_ID = $user->id;
+    $name = $user->name;
+    $user_type = $user->usertype;
 
-    {
-        $user = Auth()->user();
-        $user_ID = $user -> id;
-        $name = $user -> name;
-        $user_type = $user -> usertype;
+    $post = new Post;
+    $post->title = $request->title;
+    $post->description = $request->description;
+    $post->Post_status = 'unverified'; // Change status to 'unverified'
+    $post->user_ID = $user_ID;
+    $post->name = $name;
+    $post->user_type = $user_type;
 
-        $post = new Post;
-        $post-> title = $request-> title;
-        $post -> description = $request -> description;
-        $post -> Post_status = 'active';
-        $post -> user_ID = $user_ID;
-        $post -> name = $name;
-        $post -> user_type = $user_type;
+    $image = $request->image;
 
-        $image = $request-> image;
-
-
-        #public
-        if($image)
-        {
-        
-        $imagename =time().'.'.$image -> getClientOriginalExtension();
-        $request -> image ->move('postimage',$imagename);
-        $post -> image = $imagename;
-
-
-        }
-        
-
-
-        $post -> save();
-
-        return redirect()->back()->with('message','Post Added Successfully');
+    // Handle image upload
+    if ($image) {
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('postimage', $imagename);
+        $post->image = $imagename;
     }
+
+    $post->save();
+
+    return redirect()->back()->with('message', 'Post added successfully');
+}
+
+    
+        
+
+
+       
+    
     public function show_post()
     {
         $post = Post::all();
@@ -116,10 +124,84 @@ class AdminController extends Controller
 
         return redirect()->back();
 
+    }
 
+    public function add_vet()
+    {
+        return view('admin.add_vet');
+    }
 
+    public function add_vet_info(Request $request)
+    {
+        $user=Auth()->user();
+        $user_ID=$user->id;
+        $user_type=$user->user_type;
+        $post=new Vet;
+        $post-> name= $request->name;
+        $post-> contact= $request->contact;
+        $post-> locality= $request->locality;
+        $post-> address= $request->address;
+        $post-> Post_status= 'active';
+        $post-> user_ID=$user_ID;
+        $post-> user_type=$user_type;
+
+        $image = $request-> image;
+
+        if($image)
+        {
+        $imagename =time().'.'.$image -> getClientOriginalExtension();
+        $request -> image ->move('vet_image',$imagename);
+        $post-> image = $imagename;
+        }
+
+        $post->save();
+
+        return redirect()-> back()->with('message','Vet Information Added'); 
 
     }
+
+    public function view_vet()
+    {
+        $post=Vet::all();
+        return view('admin.view_vet',compact('post'));
+    }
+
+    public function delete_vet($id)
+
+    {
+        $post= Vet::find($id);
+        $post -> delete();
+
+        return redirect()->back();
+
+    }
+    public function verify_post($id)
+{
+    $post = Post::find($id);
+    if (!$post) {
+        return redirect()->back()->with('error', 'Post not found');
+    }
+
+    $post->post_status = 'verified';
+    $post->save();
+
+    return redirect()->back()->with('success', 'Post verified successfully');
+}
+public function reject_post($id)
+{
+    $post = Post::find($id);
+    if (!$post) {
+        return redirect()->back()->with('error', 'Post not found');
+    }
+
+    $post->Post_status = 'Unverified';
+    $post->save();
+
+    return redirect()->back()->with('success', 'Post unverified successfully');
+    
+}
+
+
 
 
 

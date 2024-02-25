@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('age')-> nullable();
             $table->string("gender")-> nullable();
             $table->string("personality")-> nullable();
+            $table->string("number")-> nullable();
+            $table->string("user")-> nullable();
+            $table->string("user_id")-> nullable();
+            $table->string("description")-> nullable();
             $table->string("image")-> nullable();
             $table->timestamps();
         });
