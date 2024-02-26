@@ -95,11 +95,11 @@ class HomeController extends Controller
         return view('home.create_post');
     }
 
-    public function poster(Request $request)
+    public function add_post(Request $request)
 
     {
-        $user = Auth()->user();
-        $user_ID = $user -> id;
+        
+        
         $name = $user -> name;
         $user_type = $user -> usertype;
 

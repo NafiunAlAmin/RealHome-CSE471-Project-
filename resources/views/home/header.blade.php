@@ -32,14 +32,14 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{url('blog')}}">Blog</a>
+                                    <a class="nav-link" href="{{url('blog')}}">Real Estate</a>
                                 </li>
                                 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('vethome')}}">Vet Information</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{url('create_post')}}">Create Post</a>
+                                    <a class="nav-link" href="{{url('create_post')}}">Sell a property</a>
                                 </li>
                             </ul>
                         </div>
