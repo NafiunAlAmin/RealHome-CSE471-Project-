@@ -33,6 +33,25 @@
             align-items: center;
             height: 100vh;
         }
+        .post_title
+        {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            padding: 30px;
+            color: white;
+        }
+        .div_center
+        {
+            text-align: center;
+            padding: 30px;
+        }
+        label
+        {
+            display: inline block;
+            width: 200px;
+        }
+    </style>
     </style>
   </head>
   <body>

@@ -10,7 +10,7 @@
         <div class="mdc-list-group">
           <nav class="mdc-list mdc-drawer-menu">
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="index.html">
+              <a class="mdc-drawer-link" href="{{route('home')}}">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">desktop_mac</i>
                 Dashboard
               </a>
@@ -18,20 +18,20 @@
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="pages/forms/basic-forms.html">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
-                Forms
+                User work
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item" href="#" data-toggle="expansionPanel" target-panel="ui-sub-menu">
               <a class="mdc-drawer-link" href="#">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
-                UI Features
+                Tasks
                 <i class="mdc-drawer-arrow material-icons">arrow_drop_down</i>
               </a>
               <div class="mdc-expansion-panel" id="ui-sub-menu">
                 <nav class="mdc-list mdc-drawer-submenu">
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="pages/ui-features/buttons.html">
-                      Buttons
+                    <a class="mdc-drawer-link" href="{{route('properties')}}">
+                      Properties
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
