@@ -48,3 +48,9 @@ Route::get('/reject_post/{id}', [AdminController::class, 'reject_post'])->name('
 
 // //Search in admin.show_post.php
 // Route::get('/admin_search_post', [AdminController::class, 'admin_search_post']);
+
+//Auction
+
+route::get('/post_auction',[HomeController::class,'post_auction'])->name('post_auction');
+Route::post('/added_auction',[HomeController::class,'added_auction'])->name('added_auction');
+route::get('/monitor',[AdminController::class,'monitor'])->name('monitor');

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Auction;
 
 class Homecontroller extends Controller
 {
@@ -123,6 +124,60 @@ class Homecontroller extends Controller
         $post = post::all();
         return view('home.blog',compact('post'));
     }
+
+
+    public function post_auction(){
+        return view('home.post_auc');
+    }
+
+
+    public function added_auction(Request $request)
+
+    {
+
+        $name = Auth::user()-> name;
+        $user_type = Auth::user()->type;
+        $user_ID = Auth::user()-> id;
+        //dd($user_ID);
+        $auction = new Auction;
+        $auction-> name = $request-> title;
+        $auction -> address = $request -> address;
+        $auction-> bedroom = $request-> bedroom;
+        $auction -> bathroom = $request -> bathroom;
+        $auction-> garage = $request-> garage;
+        $auction -> stories = $request -> stories;
+        $auction -> area=$request->area;
+        $auction -> description=$request-> description;
+        $auction -> price=$request-> price;
+        $auction -> number=Auth::user()->number;
+        $auction -> base=$request-> base;
+        $auction -> Post_status = 'active';
+        $auction -> user_ID = $user_ID;
+        $auction -> user_type = $user_type;
+
+        $image = $request-> image;
+
+
+        #public
+        if($image)
+        {
+
+        $imagename =time().'.'.$image -> getClientOriginalExtension();
+        $request -> image ->move('imager',$imagename);
+        $auction -> image = $imagename;
+
+
+        }
+
+
+        $auction -> save();
+
+         return redirect()->back()->with('message','Post Added Successfully');
+    }
+
+
+
+
 
 
 }

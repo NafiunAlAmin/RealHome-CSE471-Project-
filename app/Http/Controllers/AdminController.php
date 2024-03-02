@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Auction;
 
 
 class AdminCOntroller extends Controller
@@ -68,5 +69,9 @@ public function reject_post($id)
         }
 
         return view('admin.show_post',compact('post','message'));
+    }
+    public function monitor(){
+        $auction=Auction::all();
+        return view('admin.monitor',compact('auction'));
     }
 }
