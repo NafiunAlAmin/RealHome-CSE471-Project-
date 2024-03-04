@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Auction;
 
 
 class AdminCOntroller extends Controller
@@ -26,6 +27,26 @@ class AdminCOntroller extends Controller
 
     return redirect()->back()->with('success', 'Post verified successfully');
 }
+    public function status_post($id)
+{
+    $post = Post::find($id);
+    if (!$post) {
+        return redirect()->back()->with('error', 'Post not found');
+    }
+    if ($post->status=='Active')
+    {
+        $post->status = 'Inactive';
+        $post->save();
+
+        return redirect()->back()->with('success', 'Post inactive');
+    } else{
+        $post->status = 'Active';
+        $post->save();
+
+        return redirect()->back()->with('success', 'Post active');
+    }
+}
+
 public function reject_post($id)
 {
     $post = Post::find($id);
@@ -68,5 +89,9 @@ public function reject_post($id)
         }
 
         return view('admin.show_post',compact('post','message'));
+    }
+    public function monitor(){
+        $auction=Auction::all();
+        return view('admin.monitor',compact('auction'));
     }
 }

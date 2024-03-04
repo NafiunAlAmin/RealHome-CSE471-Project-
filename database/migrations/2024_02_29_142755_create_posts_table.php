@@ -26,9 +26,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('price')->nullable();
             $table->string('number')->nullable();
+            $table->string('username')->nullable();
             $table->string('user_ID')->nullable();
             $table->string('Post_status')->nullable();
             $table->string('user_type')->nullable();
+            $table->string('status')->default('Active');
             $table->timestamps();
         });
     }

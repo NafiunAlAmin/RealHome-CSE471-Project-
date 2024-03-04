@@ -47,6 +47,23 @@
                 <div class="container">
                 <div class="row">
                     <div class="col-md-10">
+                        <form action="{{url('admin_search_post')}}" method="get">
+                            @csrf
+
+                            <div>
+                                <input class="btn btn-danger" type="submit" value="Show ALL">
+                            </div>
+
+                            <div style = "padding-top: 10px;">
+                                <input class="btn btn-danger" type='submit' name='unverified' value="Show All Unverified"></button>
+                            </div>
+
+                            <div style = "padding-top: 10px;">
+                                <input class="btn btn-danger" type='submit' name='verified' value="Show All Verified"></button>
+                            </div>
+                    </div>
+                    
+                    <div class="col-md-10">
 
                         <table class="table_deg">
                             <tr>
@@ -59,10 +76,11 @@
                                 <th>Delete</th>
                                 <th>Verify</th>
                                 <th>Reject</th>
+                                <th>Status</th>
                             </tr>
                             @foreach($post as $singlePost)
                             <tr>
-                                <td>{{ $singlePost->title }}</td>
+                                <td>{{ $singlePost->name }}</td>
                                 <td>{{ $singlePost->description }}</td>
                                 <td>{{ $singlePost->name }}</td>
                                 <td>{{ $singlePost->Post_status }}</td>
@@ -79,26 +97,13 @@
                                 <td>
                                     <a href="{{ route('reject_post', $singlePost->id) }}" class="btn btn-primary">Reject</a>
                                 </td>
+                                <td>
+                                    <a href="{{ route('status_post', $singlePost->id) }}" class="btn btn-primary">{{ $singlePost->status}}</a>
+                                </td>
+                                
                             </tr>
                             @endforeach
                         </table>
-                    </div>
-
-                    <div class="col-md-2">
-                        <form action="{{url('admin_search_post')}}" method="get">
-                            @csrf
-
-                            <div>
-                                <input class="btn btn-danger" type="submit" value="Show ALL">
-                            </div>
-
-                            <div style = "padding-top: 10px;">
-                                <input class="btn btn-danger" type='submit' name='unverified' value="Show All Unverified"></button>
-                            </div>
-
-                            <div style = "padding-top: 10px;">
-                                <input class="btn btn-danger" type='submit' name='verified' value="Show All Verified"></button>
-                            </div>
                     </div>
                 </div>
             </div>

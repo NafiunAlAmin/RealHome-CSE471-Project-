@@ -9,6 +9,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate pb-5 mb-5 text-center">
             <h1 class="mb-3 bread">Add Properties</h1>
+            <p><a href="{{route('user_history')}}" class="btn btn-primary py-3 px-4">Check your Properties</a></p>
           </div>  
         </div>
       </div>
@@ -49,10 +50,6 @@
                 <input type="text" name="price">
             </div>
 
-            <div class="div_center">
-                <label>Floor Area</label> 
-                <input type="text" name="area">
-            </div>
             <div class="div_center">
                 <label>Description </label>
                 <textarea name="description"></textarea>

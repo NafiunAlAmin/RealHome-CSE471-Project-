@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Auction;
 
 class Homecontroller extends Controller
 {
@@ -26,6 +27,8 @@ class Homecontroller extends Controller
         $post=Post::all();
         return view('post', compact('post'));
     }
+
+    
 
     public function add_post(){
         return view('add_post');
@@ -51,6 +54,7 @@ class Homecontroller extends Controller
         $post -> price=$request-> price;
         $post -> number=Auth::user()->number;
         $post -> Post_status = 'active';
+        $post -> username = $name;
         $post -> user_ID = $user_ID;
         $post -> user_type = $user_type;
 
@@ -74,8 +78,34 @@ class Homecontroller extends Controller
          return redirect()->back()->with('message','Post Added Successfully');
     }
 
-    public function single(){
-        return view('single');
+    public function single($id){
+        $post = Post::find($id);
+        return view('single', compact('post'));
+    }
+
+    public function userhistory(){
+        $user =Auth::User();
+        $name=$user->name;
+        $post = Post::where('username','=',$name)->get();
+        return view('userhistory', compact('post'));
+    }
+    public function reject_post($id)
+{
+    $post = Post::find($id);
+    if (!$post) {
+        return redirect()->back()->with('error', 'Post not found');
+    }
+
+    $post->status = 'Inactive';
+    $post->save();
+
+    return redirect()->back()->with('success', 'Post unverified successfully');
+
+}
+
+    public function history(){
+        $post = Post::where('username','=',$username)->get();
+        return view('history', compact('post'));
     }
 
 
@@ -123,6 +153,66 @@ class Homecontroller extends Controller
         $post = post::all();
         return view('home.blog',compact('post'));
     }
+
+
+    public function post_auction(){
+        return view('home.post_auc');
+    }
+
+
+    public function added_auction(Request $request)
+
+    {
+
+        $name = Auth::user()-> name;
+        dd($name);
+        $user_type = Auth::user()->type;
+        $user_ID = Auth::user()-> id;
+        //dd($user_ID);
+        $auction = new Auction;
+        $auction-> name = $request-> title;
+        $auction -> address = $request -> address;
+        $auction-> bedroom = $request-> bedroom;
+        $auction -> bathroom = $request -> bathroom;
+        $auction-> garage = $request-> garage;
+        $auction -> stories = $request -> stories;
+        $auction -> area=$request->area;
+        $auction -> description=$request-> description;
+        $auction -> price=$request-> price;
+        $auction -> number=Auth::user()->number;
+        $auction -> base=$request-> base;
+        $auction -> Post_status = 'active';
+        $auction -> user_ID = $user_ID;
+        $auction -> user_type = $user_type;
+
+        $image = $request-> image;
+
+
+        #public
+        if($image)
+        {
+
+        $imagename =time().'.'.$image -> getClientOriginalExtension();
+        $request -> image ->move('imager',$imagename);
+        $auction -> image = $imagename;
+
+
+        }
+
+
+        $auction -> save();
+
+         return redirect()->back()->with('message','Post Added Successfully');
+    }
+    public function panel()
+    {
+        $auction = Auction::all();
+        return view('home.panel',compact('auction'));
+    }
+
+
+
+
 
 
 }

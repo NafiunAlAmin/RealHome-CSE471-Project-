@@ -35,8 +35,8 @@
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="pages/ui-features/typography.html">
-                      Typography
+                    <a class="mdc-drawer-link" href="{{route('monitor')}}">
+                      Auction Monitoring system
                     </a>
                   </div>
                 </nav>

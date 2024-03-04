@@ -25,7 +25,11 @@ Route::post('/registration',[Authcontroller::class,'registrationUser'])->name('r
 Route::get('/logout',[Authcontroller::class,'logout'])->name('logout');
 route::get('/post',[HomeController::class,'post'])->name('post');
 Route::get('/add_post',[Homecontroller::class,'add_post'])->name('add_post');
-route::get('/single',[HomeController::class,'single'])->name('single');
+route::get('/single/{id}',[HomeController::class,'single'])->name('single');
+route::get('/history/{username}',[HomeController::class,'history'])->name('history');
+route::get('/user_history',[HomeController::class,'userhistory'])->name('user_history');
+Route::get('/reject_post1/{id}', [Homecontroller::class, 'reject_post'])->name('reject_post1');
+
 Route::post('/poster',[HomeController::class,'poster'])->name('poster');
 route::get('/properties',[AdminController::class,'properties'])->name('properties');
 
@@ -40,6 +44,7 @@ route::get('/blog',[HomeController::class,'blog']);
 Route::get('/verify_post/{id}', [AdminController::class, 'verify_post'])->name('verify_post');
 Route::get('/verify_post/{id}', [AdminController::class, 'verify_post'])->name('verify_post');
 Route::get('/reject_post/{id}', [AdminController::class, 'reject_post'])->name('reject_post');
+Route::get('/status_post/{id}', [AdminController::class, 'status_post'])->name('status_post');
 
 
 //AYAN
@@ -48,3 +53,10 @@ Route::get('/reject_post/{id}', [AdminController::class, 'reject_post'])->name('
 
 // //Search in admin.show_post.php
 // Route::get('/admin_search_post', [AdminController::class, 'admin_search_post']);
+
+//Auction
+
+route::get('/post_auction',[HomeController::class,'post_auction'])->name('post_auction');
+Route::post('/added_auction',[HomeController::class,'added_auction'])->name('added_auction');
+route::get('/monitor',[AdminController::class,'monitor'])->name('monitor');
+route::get('/panel',[HomeController::class,'panel'])->name('panel');

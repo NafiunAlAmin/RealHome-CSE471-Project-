@@ -29,7 +29,7 @@
                 <label  class="form-label">Full Name</label>
                 <input type="text" class="form-control" name="name">
             </div>
-            
+
             <div class="mb-3">
                 <label  class="form-label">Number</label>
                 <input type="text" class="form-control" name="number">
