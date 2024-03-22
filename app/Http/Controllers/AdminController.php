@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Nearby;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Auction;
 
@@ -15,6 +16,38 @@ class AdminCOntroller extends Controller
         $post=Post::all();
         return view('admin.properties',compact('post'));
     }
+
+    public function nearby(){
+        $post=Nearby::all();
+        return view('admin.nearby',compact('post'));
+    }
+
+    public function postnearby(Request $request)
+
+    {
+        $post = new Nearby;
+        $post-> name = $request-> title;
+        $post -> address = $request -> address;
+        $post -> type =$request -> type;
+        $post -> description =$request -> description;
+        $image = $request-> image;
+        if($image)
+        {
+
+        $imagename =time().'.'.$image -> getClientOriginalExtension();
+        $request -> image ->move('nearbyimage',$imagename);
+        $post -> image = $imagename;
+
+
+        }
+        $post -> save();
+
+         return redirect()->back()->with('message','Post Added Successfully');
+    }
+
+
+
+
     public function verify_post($id)
 {
     $post = Post::find($id);

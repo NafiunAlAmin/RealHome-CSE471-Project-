@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Nearby;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Auction;
 
@@ -14,6 +15,7 @@ class Homecontroller extends Controller
     public function welcome(){
         return view('welcome');
     }
+    
     public function redirect(){
         $usertype=Auth::user()->type;
         if ($usertype=='0'){
@@ -25,6 +27,11 @@ class Homecontroller extends Controller
 
     public function post(){
         $post=Post::all();
+        return view('post', compact('post'));
+    }
+
+    public function specificpost($address){
+        $post=Post::where('address', 'LIKE', '%' . $address . '%')->get();
         return view('post', compact('post'));
     }
 
@@ -83,6 +90,11 @@ class Homecontroller extends Controller
         return view('single', compact('post'));
     }
 
+    public function singleplace($id){
+        $post = Nearby::find($id);
+        return view('singleplace', compact('post'));
+    }
+
     public function userhistory(){
         $user =Auth::User();
         $name=$user->name;
@@ -103,9 +115,14 @@ class Homecontroller extends Controller
 
 }
 
-    public function history(){
+    public function history($username){
         $post = Post::where('username','=',$username)->get();
         return view('history', compact('post'));
+    }
+
+    public function crime(){
+        $output = shell_exec('Python D:\Laravel\reales\public\predictors\crime.py');
+        return view('crime', ['output' => $output]);
     }
 
 
@@ -208,6 +225,11 @@ class Homecontroller extends Controller
     {
         $auction = Auction::all();
         return view('home.panel',compact('auction'));
+    }
+
+    public function places(){
+        $post = Nearby::all();
+        return view('places',compact('post'));
     }
 
 

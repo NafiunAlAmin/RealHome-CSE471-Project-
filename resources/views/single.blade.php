@@ -32,50 +32,54 @@
       		</div>
       	</div>
       	<div class="row">
-      		<div class="col-md-12 pills">
-						<div class="bd-example bd-example-tabs">
-							<div class="d-flex">
-							  <ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
+      		<div class="col-md-8 pills">
+				<div class="bd-example bd-example-tabs">
+					<div class="d-flex">
+						<ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
 
-							    <li class="nav-item">
-							      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Features</a>
-							    </li>
-							    <li class="nav-item">
-							      <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
-							    </li>
-							  </ul>
+						<li class="nav-item">
+							<a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Features</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="pills-nearby-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Nearby</a>
+						</li>
+						</ul>
+					</div>
+
+					<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+						<div class="row">
+							<div class="col-md-4">
+								<ul class="features">
+								<li class="check"><span class="ion-ios-checkmark-circle"></span>Floor Area: {{$post-> area}} SQ FT</li>
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Bed Rooms: {{$post-> bedroom}}</li>
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Bath Rooms: {{$post-> bathroom}}</li>
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Garage: {{$post-> garage}}</li>
+								</ul>
 							</div>
-
-						  <div class="tab-content" id="pills-tabContent">
-						    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-						    	<div class="row">
-						    		<div class="col-md-4">
-						    			<ul class="features">
-										<li class="check"><span class="ion-ios-checkmark-circle"></span>Floor Area: {{$post-> area}} SQ FT</li>
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Bed Rooms: {{$post-> bedroom}}</li>
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Bath Rooms: {{$post-> bathroom}}</li>
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Garage: {{$post-> garage}}</li>
-						    			</ul>
-						    		</div>
-						    		<div class="col-md-4">
-						    			<ul class="features">
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Year Build:: 2019</li>
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Water and Gas</li>
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Stories: {{$post-> stories}}</li>
-						    				<li class="check"><span class="ion-ios-checkmark-circle"></span>Roofing: New</li>
-						    			</ul>
-						    		</div>
-						    	</div>
-						    </div>
-
-						    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-						      <p>{{$post-> description}}</p>
-						    </div>
-						  </div>
+							<div class="col-md-4">
+								<ul class="features">
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Year Build:: 2019</li>
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Water and Gas</li>
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Stories: {{$post-> stories}}</li>
+									<li class="check"><span class="ion-ios-checkmark-circle"></span>Roofing: New</li>
+								</ul>
+							</div>
 						</div>
-		      </div>
+					</div>
+
+					<div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+						<p>{{$post-> description}}</p>
+					</div>
+					<div class="tab-pane fade" id="pills-nearby" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+						<p>{{$post-> description}}</p>
+					</div>
 				</div>
-      </div>
+		    </div>
+		</div>
     </section>
     @include('include.footer')
 @endsection

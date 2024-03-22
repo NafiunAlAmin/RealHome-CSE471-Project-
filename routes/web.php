@@ -23,18 +23,23 @@ Route::post('/login',[Authcontroller::class,'loginUser'])->name('loginUser');
 Route::get('/registration',[Authcontroller::class,'registration'])->name('registration');
 Route::post('/registration',[Authcontroller::class,'registrationUser'])->name('registrationUser');
 Route::get('/logout',[Authcontroller::class,'logout'])->name('logout');
+
 route::get('/post',[HomeController::class,'post'])->name('post');
+route::get('/specificpost/{address}',[HomeController::class,'specificpost'])->name('specificpost');
+
+
 Route::get('/add_post',[Homecontroller::class,'add_post'])->name('add_post');
 route::get('/single/{id}',[HomeController::class,'single'])->name('single');
 route::get('/history/{username}',[HomeController::class,'history'])->name('history');
 route::get('/user_history',[HomeController::class,'userhistory'])->name('user_history');
 Route::get('/reject_post1/{id}', [Homecontroller::class, 'reject_post'])->name('reject_post1');
-
+Route::get('/crime', [Homecontroller::class, 'crime'])->name('crime');
 Route::post('/poster',[HomeController::class,'poster'])->name('poster');
 route::get('/properties',[AdminController::class,'properties'])->name('properties');
-
-
-
+route::get('/nearby',[AdminController::class,'nearby'])->name('nearby');
+Route::post('/postnearby',[AdminController::class,'postnearby'])->name('postnearby');
+Route::get('/places', [Homecontroller::class, 'places'])->name('places');
+route::get('/singleplace/{id}',[HomeController::class,'singleplace'])->name('singleplace');
 route::get('/index',[HomeController::class,'index']);
 route::get('/adoption',[HomeController::class,'adoption']);
 route::get('/adoptpost',[HomeController::class,'adoptpost'])-> middleware('auth');

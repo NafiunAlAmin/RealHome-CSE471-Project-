@@ -11,7 +11,8 @@
 	          <li class="nav-item"><a href="{{route('post')}}" class="nav-link">Properties</a></li>
 	          <li class="nav-item"><a href="{{route('post_auction')}}" class="nav-link">Create Auction</a></li>
 	          <li class="nav-item"><a href="{{route('panel')}}" class="nav-link">Auction Panel</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="{{route('crime')}}" class="nav-link">Crime</a></li>
+			  <li class="nav-item"><a href="{{route('places')}}" class="nav-link">Historical places</a></li>
 			  @if (Route::has('login'))
                     @auth
 					<li class="nav-item"><a href="{{ route('logout') }}" class="nav-link">Logout</a></li>

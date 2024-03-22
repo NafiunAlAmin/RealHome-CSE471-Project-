@@ -35,6 +35,11 @@
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="{{route('nearby')}}">
+                      Nearby
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="{{route('monitor')}}">
                       Auction Monitoring system
                     </a>
