@@ -53,7 +53,7 @@ Route::get('/status_post/{id}', [AdminController::class, 'status_post'])->name('
 
 
 //AYAN
-route::get('/nearby_facilities/{address}',[HomeController::class,'nearby_facilities'])->name('nearby');
+route::get('/nearby_facilities/{address}',[HomeController::class,'nearby_facilities'])->name('nearby_facilities');
 //Search in home.blog.php
 // Route::get('/home_search_blog',[HomeController::class,'home_search_blog']);
 

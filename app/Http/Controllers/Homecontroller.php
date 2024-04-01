@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Auction;
 use App\Models\Ads;
 
+use Illuminate\Database\Query\Builder;
 
 class Homecontroller extends Controller
 {
@@ -290,7 +291,13 @@ class Homecontroller extends Controller
         $nearby=Nearby::where('address', 'LIKE', '%' . $address . '%')
         ->where('type','!=','industry')
         ->get();
-        return view('nearby', compact('nearby'));
+
+        $types=Nearby::distinct()
+            ->where('address', 'LIKE', '%' . $address . '%')
+            ->where('type','!=','industry')->get('type');
+
+
+        return view('nearby', compact('nearby','types'));
     }
 
 

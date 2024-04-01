@@ -18,19 +18,29 @@
 
     <section class="ftco-section goto-here">
     	<div class="container">
-        <div class="row">
-			@foreach($nearby as $post)
-				<div class="col-md-4">
-					<div class="property-wrap ftco-animate">
-						<div class="img d-flex align-items-center justify-content-center" style="background-image: url(nearbyimage/{{$post->image}});">
-						</div>
-						<div class="text">
-							<h3 class="mb-0"><a href="{{ url('singleplace',$post-> id) }}">{{$post-> name}}</a></h3>
-							<span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>{{$post-> address}}</span>
-						</div>
-					</div>
-				</div>
-			@endforeach
+                @foreach($types as $type)
+                    <div class="row">
+                        <div class="col-md-12 pills">
+                            <div class="row">
+                                    <h2>{{$type-> type}}</h2>
+                                    @foreach($nearby as $post)
+                                        @if ($post->type == $type->type)
+                                            <div class="col-md-4">
+                                                <div class="property-wrap ftco-animate">
+                                                    <div class="img d-flex align-items-center justify-content-center" style="background-image: url(nearbyimage/{{$post->image}});">
+                                                    </div>
+                                                    <div class="text">
+                                                        <h3 class="mb-0"><a href="{{ url('singleplace',$post-> id) }}">{{$post-> name}}</a></h3>
+                                                        <span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>{{$post-> address}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
         </div>
 
     </section>
